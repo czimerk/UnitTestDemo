@@ -7,10 +7,10 @@ namespace UnitTestDemo.Data
 {
     public class MemoryDb
     {
-        internal List<StoreKeeper> StoreKeepers { get; private set; }
-        internal List<Order> Orders { get; private set; }
-        internal List<Store> Stores { get; private set; }
-        internal List<Customer> Customers { get; private set; }
+        public List<StoreKeeper> StoreKeepers { get; private set; }
+        public List<Order> Orders { get; private set; }
+        public List<Store> Stores { get; private set; }
+        public List<Customer> Customers { get; private set; }
 
         private MemoryDb()
         {
