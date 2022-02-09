@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestDemo.Models
 {
-    internal class StoreKeeper :User
+    public class StoreKeeper :User
     {
         public Store Store { get; set; }
         public Guid StoreId { get; set; }

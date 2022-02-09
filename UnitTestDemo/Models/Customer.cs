@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestDemo.Models
 {
-    internal class Customer : User
+    public class Customer : User
     {
         public List<Order> Orders { get; set; }
 

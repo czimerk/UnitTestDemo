@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestDemo.Models
 {
-    internal class User
+    public class User
     {
         public Guid Id { get; set; }
         public string Username { get; set; }

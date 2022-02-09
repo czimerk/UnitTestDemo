@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestDemo.Models
 {
-    internal class Order
+    public class Order
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
