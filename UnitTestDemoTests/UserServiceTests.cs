@@ -8,11 +8,10 @@ namespace UnitTestDemoTests
 {
     public class UserServiceTests
     {
-        private static readonly string NonExistingGuid = "2944f688-5ac9-4fcd-bfb0-b877c41686e8";
-        private static readonly string ExistingGuid = "27ecaa8a-f543-40bf-8b99-6762a76241ac";
-
+        private static readonly Guid NonExistingGuid = new Guid("468c726c-bcde-4f79-97e2-f15f30c6ef59");
+        private static readonly Guid ExistingGuid = new Guid("d8d78fd8-2b06-48a9-9741-a622209af4cc");
         [Fact]
-        public void RegisterStoreKeeper_StoreKeeperWithNotStoreId_ThrowsArgumentException()
+        public void RegisterStoreKeeper_NoStoreId_ThrowsArgumentException()
         {
             var validStoreKeeper = new StoreKeeper()
             {
@@ -22,30 +21,43 @@ namespace UnitTestDemoTests
         }
 
         [Fact]
-        public void RegisterStoreKeeper_StoreKeeperWithNonExistentStore_ThrowsInvalidOperationException()
+        public void RegisterStoreKeeper_NonExistingStoreId_ThrowsInvalidOperationExceptionException()
         {
             var validStoreKeeper = new StoreKeeper()
             {
-                StoreId = new Guid(NonExistingGuid)
+                StoreId = NonExistingGuid
             };
             var service = new UserService();
             Assert.Throws<InvalidOperationException>(() => service.RegisterStoreKeeper(validStoreKeeper));
         }
 
         [Fact]
-        public void RegisterStoreKeeper_StoreKeeperWithExistentStore_ReturnId()
+        public void RegisterStoreKeeper_ExistingStoreId_ThrowsInvalidOperationExceptionException()
         {
             MemoryDb.Instance.Stores.Add(new Store()
-            { 
-                Id = new Guid(ExistingGuid)
+            {
+                Id = ExistingGuid
             });
             var validStoreKeeper = new StoreKeeper()
             {
-                StoreId = new Guid(ExistingGuid)
+                StoreId = ExistingGuid
             };
             var service = new UserService();
             var id = service.RegisterStoreKeeper(validStoreKeeper);
             Assert.NotNull(id);
+        }
+
+
+        [Fact]
+        public void TheAnswerToLifeUniverseAndEverything_ShouldBe42()
+        {
+            var theAnswer = CalculateAnswer();
+            Assert.Equal(42, theAnswer);
+        }
+
+        private int CalculateAnswer()
+        {
+            return 42;
         }
     }
 }
